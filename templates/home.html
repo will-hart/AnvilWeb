@@ -1,7 +1,65 @@
 {% extends "base.html" %}
 
-{% block body %}
-  {% for entry in entries %}
-    {% module Entry(entry) %}
-  {% end %}
+{% block content %}
+
+<div id="hero_container">
+        <div class="container top_pad">
+            <div class="sixteen columns">
+                <img src="images/banner.png" alt="ArmaMG Banner">
+            </div>
+        </div>
+    </div>
+    
+	<div id="body_container">
+        <div class="container">
+            <div class="one-third column alpha">
+                <h3 class="light_text">Fast</h3>
+                <p class="light_text">Build unique playable missions with just a few clicks</p>
+            </div>
+            <div class="one-third column">
+                <h3 class="light_text">Random</h3>
+                <p class="light_text">Add a random element to enemy dispositions</p>
+            </div>
+            <div class="one-third column omega">
+                <h3 class="light_text">Smart</h3>
+                <p class="light_text">Intelligent configuration to suit your tastes</p>
+            </div>
+        </div><!-- container -->
+    </div><!-- body container -->
+    
+    <div class="container mega_top_pad">
+        <div class="sixteen columns alpha omega">
+            <p>
+                The Anvil Mission Generator (AnvilMG) is a simple Windows utility that lets you build the skeleton of a 
+                compelling  Arma2 or ArmA3 mission.  It takes the grunt work out of producing a mission, removing the
+                 need to micro-manage the placement and armament of units and groups.
+            </p>
+            <p>
+                In particular, Anvil MG lets you easily reuse custom groups or units and allows you to set your unit defaults
+                the way you want to.  Want all your groups to be created as playable? No problems!  Want your riflemen to 
+                be armed with a custom loadout? No problems! 
+            </p>
+            <p>
+                Best of all ArmaMG is free and open source.  It is distributed under an MIT license so you are free to contribute
+                or follow the development on github. If you want to see it in action, 
+                <a href="gallery.html">have a look at some screenshots</a>.
+            </p>
+        </div>
+        
+        <div class="four columns alpha">&nbsp;</div>
+        <div class="four columns top_pad">
+            <a href="download.html" class="hero_button hero_button_blue">
+                <img src="images/iDownload.png">
+                Downloads
+            </a>
+        </div>
+        <div class="four columns top_pad">
+            <a href="https://github.com/will-hart/anvil" class="hero_button hero_button_red">
+                <img src="images/iSource.png">
+                Source Code
+            </a>
+        </div>
+        <div class="four columns omega">&nbsp;</div>
+    </div><!-- container -->
+
 {% end %}
