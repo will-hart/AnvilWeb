@@ -50,6 +50,7 @@ class Application(tornado.web.Application):
             (r"/downloads", DownloadHandler),
             (r"/gallery", GalleryHandler),
             (r"/browse", BrowseHandler),
+            (r"/browse/([0-9]+)", BrowseHandler),
             (r"/serve/([^/]+)", FileServeHandler),
             (r"/entry/([^/]+)", EntryHandler),
             (r"/raw/([^/]+)", RawEntryHandler),
@@ -103,8 +104,10 @@ class BrowseHandler(BaseHandler):
     """
     Allows browsing of scripts
     """
-    def get(self):
-        entries = self.db.query("SELECT * FROM entries ORDER BY updated DESC LIMIT 15")
+    def get(self, page=1):
+        records_per_page = 15
+        offset = records_per_page * (int(page) - 1)
+        entries = self.db.query("SELECT * FROM entries ORDER BY updated DESC LIMIT 15 OFFSET %s" % offset)
         self.render("browse.html", entries=entries)
 
     def post(self):
