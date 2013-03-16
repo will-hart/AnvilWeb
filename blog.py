@@ -132,7 +132,24 @@ class GalleryHandler(BaseHandler):
 class FileServeHandler(BaseHandler):
     def get(self, file_name):
         # work out which file to get from the query
-        file = self.db.get("SELECT * FROM file_name WHERE slug = %s", file_name)
+        file = self.db.get("SELECT file_path FROM files WHERE file_slug = '%s'" % file_name)
+        if not file:
+            raise tornado.web.HTTPError(404)
+        path = file.file_path
+        
+        # increase the download count
+        sql = "UPDATE files SET downloads = downloads + 1" +\
+            " WHERE file_slug = '%s'" % file_name
+        print sql
+        self.db.execute(sql);
+        
+        # add headers
+        self.set_header("Content-Disposition", "attachment; filename=" + path)
+        self.set_header("Content-Type", "application/x-zip-compressed")
+        
+        # get the download
+        with open('files/'+path,'rb') as f:
+            self.write(f.read())
 
 
 class EntryHandler(BaseHandler):
