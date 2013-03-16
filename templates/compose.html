@@ -2,9 +2,12 @@
 
 {% block head %}
         <script src="{{ static_url("js/codemirror.js") }}"></script>
-        <link rel="stylesheet" href="{{ static_url("css/codemirror.css") }}">
         <script src="{{ static_url("js/codemirror.mode.clike.js") }}"></script>
         <script src="{{ static_url("js/editor.js") }}"></script>
+        
+        
+        <link rel="stylesheet" href="{{ static_url("css/codemirror.css") }}">
+        <link rel="stylesheet" href="{{ static_url("css/codemirror.theme.ambiance.css") }}">
 {% end %}
 
 {% block body %}

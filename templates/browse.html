@@ -2,12 +2,20 @@
 
 {% block body %}
     <div class="sixteen columns alpha omega top_pad">
+    {%if entries%}
         {% for entry in entries %}
         <div class="browse_entry">
-            <h3>{{ entry.title }}</h3>
+            <h3><a href="/entry/{{entry.slug}}">{{ entry.title }}</a></h3>
             <p>{{ entry.description }}</p>
         </div>
         <hr>
         {% end %}
+    {% else %}
+        <p>
+            No scripts were found! 
+            <a href="/browse">Browse</a> from the first page, or 
+            <a href="/compose">create a new one</a>
+        </p>
+    {% end %}
     </div>
 {% end %}
