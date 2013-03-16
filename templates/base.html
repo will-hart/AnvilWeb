@@ -49,10 +49,10 @@
                     {% else %}
                         Sign in with 
                         <a href="/auth/login?next={{ url_escape(request.uri) }}">
-                            <img src="{{ static_url("img/social/google-32x32.png") }}" width="32" height="32" title="Google" alt="Google Login"/></a>
-                        <!--<a href="/auth/fblogin?next={{ url_escape(request.uri) }}">
-                            <img src="{{ static_url("img/social/facebook.png") }}" width="32" height="32" title="Facebook" alt="Facebook Login" />
-                        </a>-->
+                            <img src="{{ static_url("img/social/google-32x32.png") }}" title="Google" alt="Google Login"/></a>
+                        <a href="/auth/fblogin?next={{ url_escape(request.uri) }}">
+                            <img src="{{ static_url("img/social/facebook-32x32.png") }}" title="Facebook" alt="Facebook Login" />
+                        </a>
                     {% end %}
                 </div>
             </div><!-- container -->

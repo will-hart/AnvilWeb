@@ -60,7 +60,7 @@ class Application(tornado.web.Application):
             (r"/compose", ComposeHandler),
             (r"/profile", ProfileHandler),
             (r"/auth/login", GoogleLoginHandler),
-            #(r"/auth/fblogin", FacebookLoginHandler),
+            (r"/auth/fblogin", FacebookLoginHandler),
             (r"/auth/logout", AuthLogoutHandler),
         ]
         settings = dict(
@@ -92,6 +92,17 @@ class BaseHandler(tornado.web.RequestHandler):
         user_id = self.get_secure_cookie("anvilscript_cookie")
         if not user_id: return None
         return self.db.get("SELECT * FROM authors WHERE id = %s", int(user_id))
+
+    def create_user_or_cookie(self, username, email):
+        author = self.db.get("SELECT * FROM authors WHERE email = %s", email)
+        if not author:
+            author_id = self.db.execute(
+                "INSERT INTO authors (email,name) VALUES (%s,%s)",
+                email, username)
+        else:
+            author_id = author["id"]
+        self.set_secure_cookie("anvilscript_cookie", str(author_id))
+        self.redirect(self.get_argument("next", "/"))
 
 
 class ProfileHandler(BaseHandler):
@@ -245,24 +256,9 @@ class GoogleLoginHandler(BaseHandler, tornado.auth.GoogleMixin):
     def _on_auth(self, user):
         if not user:
             raise tornado.web.HTTPError(500, "Google auth failed")
-        author = self.db.get("SELECT * FROM authors WHERE email = %s",
-                             user["email"])
-        if not author:
-            # Auto-create first author
-            any_author = self.db.get("SELECT * FROM authors LIMIT 1")
-            if not any_author:
-                author_id = self.db.execute(
-                    "INSERT INTO authors (email,name) VALUES (%s,%s)",
-                    user["email"], user["name"])
-            else:
-                self.redirect("/")
-                return
-        else:
-            author_id = author["id"]
-        self.set_secure_cookie("anvilscript_cookie", str(author_id))
-        self.redirect(self.get_argument("next", "/"))
+        self.create_user_or_cookie(user['name'], user['email'])
 
-"""
+
 class FacebookLoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
     @tornado.web.asynchronous
     def get(self):
@@ -275,18 +271,17 @@ class FacebookLoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                 client_id=self.settings["facebook_api_key"],
                 client_secret=self.settings["facebook_secret"],
                 code=self.get_argument("code"),
-                callback=self._on_auth)
+                callback=self._on_auth,
+                extra_fields=["email"])
             return
         self.authorize_redirect(redirect_uri=my_url,
                                 client_id=self.settings["facebook_api_key"],
-                                extra_params={"scope": "read_stream"})
+                                extra_params={"scope": "email"})
 
     def _on_auth(self, user):
         if not user:
             raise tornado.web.HTTPError(500, "Facebook auth failed")
-        self.set_secure_cookie("anvilscript_cookie", tornado.escape.json_encode(user))
-        self.redirect(self.get_argument("next", "/"))
-"""
+        self.create_user_or_cookie(user['name'], user['email'])
 
 
 class AuthLogoutHandler(BaseHandler):
