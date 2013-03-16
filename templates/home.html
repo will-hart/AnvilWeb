@@ -5,61 +5,64 @@
 <div id="hero_container">
         <div class="container top_pad">
             <div class="sixteen columns">
-                <img src="images/banner.png" alt="ArmaMG Banner">
+                <img id="main_banner" src="{{ static_url("img/banner.png") }}" alt="ArmaMG Banner">
+                <img id="small_banner" src="{{ static_url("img/logo.png") }}" alt="ArmaMG Logo">
             </div>
         </div>
     </div>
     
 	<div id="body_container">
         <div class="container">
-            <div class="one-third column alpha">
+            <div class="four columns alpha">
                 <h3 class="light_text">Fast</h3>
-                <p class="light_text">Build unique playable missions with just a few clicks</p>
+                <p class="light_text">Build playable missions with just a few clicks</p>
             </div>
-            <div class="one-third column">
+            <div class="four columns ">
                 <h3 class="light_text">Random</h3>
-                <p class="light_text">Add a random element to enemy dispositions</p>
+                <p class="light_text">Add a random element to your missions</p>
             </div>
-            <div class="one-third column omega">
-                <h3 class="light_text">Smart</h3>
-                <p class="light_text">Intelligent configuration to suit your tastes</p>
+            <div class="four columns">
+                <h3 class="light_text">Configurable</h3>
+                <p class="light_text">Configuration defaults to suit your style</p>
+            </div>
+            <div class="four columns omega">
+                <h3 class="light_text">Scriptable</h3>
+                <p class="light_text">Online script directory lets you add features</p>
             </div>
         </div><!-- container -->
     </div><!-- body container -->
     
-    <div class="container mega_top_pad">
+    <div class="container top_pad">
         <div class="sixteen columns alpha omega">
             <p>
-                The Anvil Mission Generator (AnvilMG) is a simple Windows utility that lets you build the skeleton of a 
+                The Anvil Mission Generator (AnvilMG) is an open source Windows app that lets you build the skeleton of a 
                 compelling  Arma2 or ArmA3 mission.  It takes the grunt work out of producing a mission, removing the
-                 need to micro-manage the placement and armament of units and groups.
-            </p>
-            <p>
-                In particular, Anvil MG lets you easily reuse custom groups or units and allows you to set your unit defaults
-                the way you want to.  Want all your groups to be created as playable? No problems!  Want your riflemen to 
-                be armed with a custom loadout? No problems! 
-            </p>
-            <p>
-                Best of all ArmaMG is free and open source.  It is distributed under an MIT license so you are free to contribute
-                or follow the development on github. If you want to see it in action, 
-                <a href="gallery.html">have a look at some screenshots</a>.
+                 need to micro-manage the placement and armament of units and groups.  To see it in action, 
+                <a href="gallery">have a look at some screenshots</a>, or get started below. 
             </p>
         </div>
         
-        <div class="four columns alpha">&nbsp;</div>
+        <div class="one columns alpha">&nbsp;</div>
         <div class="four columns top_pad">
-            <a href="download.html" class="hero_button hero_button_blue">
-                <img src="images/iDownload.png">
+            <a href="downloads" class="hero_button hero_button_blue">
+                <img src="{{ static_url("img/iDownload.png") }}">
                 Downloads
             </a>
         </div>
+        <div class="one columns">&nbsp;</div>
         <div class="four columns top_pad">
-            <a href="https://github.com/will-hart/anvil" class="hero_button hero_button_red">
-                <img src="images/iSource.png">
+            <a href="https://github.com/will-hart/anvil" class="hero_button hero_button_blue">
+                <img src="{{ static_url("img/iSource.png") }}">
                 Source Code
             </a>
         </div>
-        <div class="four columns omega">&nbsp;</div>
+        <div class="one columns">&nbsp;</div>
+        <div class="four columns top_pad">
+            <a href="https://github.com/will-hart/anvil" class="hero_button hero_button_red">
+                Browse Scripts
+            </a>
+        </div>
+        <div class="one columns omega">&nbsp;</div>
     </div><!-- container -->
 
 {% end %}

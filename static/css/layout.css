@@ -86,6 +86,10 @@ h3 { font-variant: small-caps }
     margin-right: 15px;
 }
 
+#small_banner { 
+    display:none;
+}
+
 /* #Media Queries
 ================================================== */
 
@@ -93,10 +97,18 @@ h3 { font-variant: small-caps }
 	@media only screen and (max-width: 959px) {}
 
 	/* Tablet Portrait size to standard 960 (devices and browsers) */
-	@media only screen and (min-width: 768px) and (max-width: 959px) {}
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+        #main_banner{ display:none; }
+        #small_banner { display:inline-block; margin: 10px auto 30px auto; }
+        #hero_container { min-height: 50px; }
+    }
 
 	/* All Mobile Sizes (devices and browser) */
-	@media only screen and (max-width: 767px) {}
+	@media only screen and (max-width: 767px) {
+        #main_banner{ display:none; }
+        #small_banner { display:inline-block; margin: 10px auto 30px auto; }
+        #hero_container { min-height: 50px; }
+    }
 
 	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 	@media only screen and (min-width: 480px) and (max-width: 767px) {}
