@@ -100,6 +100,7 @@ div.script_output > pre {
 }
 
 input.wide-input, textarea.wide-input { min-width: 100%; }
+textarea.wide-input { height: 60%; }
 
 .menu { 
     font-size: 0.9em; 
