@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}    
+	<div id="body_container">
+        <div class="container">
+            <div class="twelve columns alpha">
+                <p class="light_text">
+                    <a href="/"><img class="logo_image" src="{{ static_url("img/logo.png") }}" alt="ArmaMG Logo"></a>
+                    The latest version (for Windows) is 0.1
+                    <br><span class="small"> * Requires .NET Framework 4+</span>
+                </p>
+                
+            </div>
+            <div class="four columns omega">
+                <a href="/serve/Anvilv0.1.zip" class="hero_button hero_button_blue">
+                    <img src="{{ static_url("img/iDownload.png") }}">
+                    Download v0.1
+                </a>
+            </div>
+        </div><!-- container -->
+    </div><!-- body container -->
+
+    <div class="container mega_top_pad">
+        <div class="sixteen columns alpha omega">
+            <h3>Previous Versions</h3>
+            <p>There are currently no previous versions available!</p>
+            
+            <h3 class="top_pad">Change Logs</h3>
+            <h4>Version 0.1</h4>
+            <ul>
+                <li>New Features:
+                    <ul>
+                        <li>The initial version - all features are new!</li>
+                    </ul>
+                </li>
+                <li>Known Issues:
+                    <ul>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% end %}

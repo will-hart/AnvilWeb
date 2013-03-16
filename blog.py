@@ -47,6 +47,9 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", HomeHandler),
             (r"/feed", FeedHandler),
+            (r"/downloads", DownloadHandler),
+            (r"/gallery", GalleryHandler),
+            (r"/serve/([^/]+)", FileServeHandler),
             (r"/entry/([^/]+)", EntryHandler),
             (r"/raw/([^/]+)", RawEntryHandler),
             (r"/compose", ComposeHandler),
@@ -97,12 +100,23 @@ class ProfileHandler(BaseHandler):
 
 class HomeHandler(BaseHandler):
     def get(self):
-        entries = self.db.query("SELECT * FROM entries ORDER BY published "
-                                "DESC LIMIT 5")
-        if not entries:
-            self.redirect("/compose")
-            return
-        self.render("home.html", entries=entries)
+        self.render("home.html")
+
+
+class DownloadHandler(BaseHandler):
+    def get(self):
+        self.render("download.html")
+
+
+class GalleryHandler(BaseHandler):
+    def get(self):
+        self.render("gallery.html")
+
+
+class FileServeHandler(BaseHandler):
+    def get(self, file_name):
+        # work out which file to get from the query
+        file = self.db.get("SELECT * FROM file_name WHERE slug = %s", file_name)
 
 
 class EntryHandler(BaseHandler):
