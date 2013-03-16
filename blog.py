@@ -14,7 +14,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import markdown
+import json
 import os.path
 import re
 import torndb
@@ -41,6 +41,9 @@ except ImportError, e:
     define("mysql_database", default="anvilscript_testdb", help="blog database name")
     define("mysql_user", default="test_user", help="blog database user")
     define("mysql_password", default="test_pass", help="blog database password")
+    define("cookie_secret", default="test_key", help="secret cookie key")
+    define("facebook_api_key", default="test_api_key", help="facebook app api key")
+    define("facebook_secret", default="test_api_secret", help="facebook api secret")
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -56,7 +59,8 @@ class Application(tornado.web.Application):
             (r"/raw/([^/]+)", RawEntryHandler),
             (r"/compose", ComposeHandler),
             (r"/profile", ProfileHandler),
-            (r"/auth/login", AuthLoginHandler),
+            (r"/auth/login", GoogleLoginHandler),
+            #(r"/auth/fblogin", FacebookLoginHandler),
             (r"/auth/logout", AuthLogoutHandler),
         ]
         settings = dict(
@@ -65,7 +69,9 @@ class Application(tornado.web.Application):
             static_path=os.path.join(os.path.dirname(__file__), "static"),
             ui_modules={"Entry": EntryModule},
             xsrf_cookies=True,
-            cookie_secret="__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__",
+            cookie_secret=options.cookie_secret,
+            facebook_api_key=options.facebook_api_key,
+            facebook_secret=options.facebook_secret,
             login_url="/auth/login",
             debug=True,
         )
@@ -167,7 +173,6 @@ class EntryHandler(BaseHandler):
         entry = self.db.get("SELECT * FROM entries WHERE slug = %s", slug)
         if not entry: raise tornado.web.HTTPError(404)
         author = self.db.get("SELECT * FROM authors WHERE id = %s", entry.author_id)
-        if not author: raise tornado.web.HTTPError(404)
         print "-------"
         print author
         print "=------"
@@ -229,7 +234,7 @@ class ComposeHandler(BaseHandler):
         self.redirect("/entry/" + slug)
 
 
-class AuthLoginHandler(BaseHandler, tornado.auth.GoogleMixin):
+class GoogleLoginHandler(BaseHandler, tornado.auth.GoogleMixin):
     @tornado.web.asynchronous
     def get(self):
         if self.get_argument("openid.mode", None):
@@ -256,6 +261,32 @@ class AuthLoginHandler(BaseHandler, tornado.auth.GoogleMixin):
             author_id = author["id"]
         self.set_secure_cookie("anvilscript_cookie", str(author_id))
         self.redirect(self.get_argument("next", "/"))
+
+"""
+class FacebookLoginHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
+    @tornado.web.asynchronous
+    def get(self):
+        my_url = (self.request.protocol + "://" + self.request.host +
+                  "/auth/fblogin?next=" +
+                  tornado.escape.url_escape(self.get_argument("next", "/")))
+        if self.get_argument("code", False):
+            self.get_authenticated_user(
+                redirect_uri=my_url,
+                client_id=self.settings["facebook_api_key"],
+                client_secret=self.settings["facebook_secret"],
+                code=self.get_argument("code"),
+                callback=self._on_auth)
+            return
+        self.authorize_redirect(redirect_uri=my_url,
+                                client_id=self.settings["facebook_api_key"],
+                                extra_params={"scope": "read_stream"})
+
+    def _on_auth(self, user):
+        if not user:
+            raise tornado.web.HTTPError(500, "Facebook auth failed")
+        self.set_secure_cookie("anvilscript_cookie", tornado.escape.json_encode(user))
+        self.redirect(self.get_argument("next", "/"))
+"""
 
 
 class AuthLogoutHandler(BaseHandler):
