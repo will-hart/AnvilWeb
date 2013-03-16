@@ -1,14 +1,16 @@
 <div class="entry top_pad">
-  <h3><a href="/entry/{{ entry.slug }}">{{ entry.title }}</a></h3>
-  <div class="meta small">
-    {%if author%}Submitted by {{author.name }}, on{%else%}Posted {%end%} 
-    {{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>
-  <div class="description top_pad">{{ entry.description }}</div>
-  <div class="script_output"><pre>{{ entry.body }}</pre></div>
-  <div class="admin">
-      {% if current_user.id == entry.author_id %}
-        <a href="/compose?id={{ entry.id }}">{{ _("Edit this post") }}</a>
-      {% end %}
-      <a href="/raw/{{ entry.slug }}">{{ _("View Raw Script") }}</a>
-  </div>
+    <h3>{{ entry.title }}</h3>
+    <div class="meta small">
+        {% if current_user.id == entry.author_id %}
+        <a href="/compose?id={{ entry.id }}">{{ _("Edit") }}</a> - 
+        {% end %}
+        <a href="/raw/{{ entry.slug }}">{{ _("View Raw") }}</a> - 
+        
+        {%if author%}Submitted by {{author.name }}, on{%else%}Posted {%end%} 
+        {{ locale.format_date(entry.published, full_format=True, shorter=True) }}
+    </div>
+
+    <div class="description top_pad"><blockquote>{{ entry.description }}</blockquote></div>
+    
+    <div class="script_output"><pre class="prettyprint">{{ entry.body }}</pre></div>
 </div>
