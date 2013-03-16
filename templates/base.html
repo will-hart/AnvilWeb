@@ -23,10 +23,10 @@
 
     <!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="{{ static_url("images/favicon.ico") }}">
-	<link rel="apple-touch-icon" href="{{ static_url("images/apple-touch-icon.png") }}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{{ static_url("images/apple-touch-icon-72x72.png") }}">
-	<link rel="apple-touch-icon" sizes="114x114" href="{{ static_url("images/apple-touch-icon-114x114.png") }}">
+	<link rel="shortcut icon" href="{{ static_url("img/favicon.ico") }}">
+	<link rel="apple-touch-icon" href="{{ static_url("img/apple-touch-icon.png") }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ static_url("img/apple-touch-icon-72x72.png") }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ static_url("img/apple-touch-icon-114x114.png") }}">
 
     {% block head %}{% end %}
   </head>
@@ -48,8 +48,8 @@
                         <a href="/auth/logout?next={{ url_escape(request.uri) }}">{{ _("Sign out") }}</a>
                     {% else %}
                         Sign in with 
-                        <a href="/auth/login?next={{ url_escape(request.uri) }}">Google</a> or 
-                        
+                        <a href="/auth/login?next={{ url_escape(request.uri) }}">{{ _("Google") }}</a> or 
+                        <a href="/auth/fblogin?next={{ url_escape(request.uri) }}">{{ _("Facebook") }}</a>
                     {% end %}
                 </div>
             </div><!-- container -->
