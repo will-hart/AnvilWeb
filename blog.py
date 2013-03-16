@@ -172,7 +172,7 @@ class ComposeHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
         id = self.get_argument("id", None)
-        title = self.get_argument("title")
+        title = self.get_argument("title", "")
         description = self.get_argument("description")
         body = self.get_argument("body")
         if id:
@@ -180,8 +180,8 @@ class ComposeHandler(BaseHandler):
             if not entry: raise tornado.web.HTTPError(404)
             slug = entry.slug
             self.db.execute(
-                "UPDATE entries SET title = %s, description = %s, body = %s "
-                "WHERE id = %s", title, description, body, int(id))
+                "UPDATE entries SET description = %s, body = %s "
+                "WHERE id = %s", description, body, int(id))
         else:
             slug = unicodedata.normalize("NFKD", title).encode(
                 "ascii", "ignore")

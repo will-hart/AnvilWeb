@@ -4,7 +4,13 @@
     <div class="sixteen columns alpha omega top_pad">
         <h3>Edit Script</h3>
         <form action="{{ request.path }}" method="post" class="compose">
-            <div style="margin-bottom:5px"><input name="title" type="text" class="wide-input" value="{{ entry.title if entry else "" }}"/></div>
+            <div class="top_pad" style="margin-bottom:5px">
+                {% if entry %}
+                <strong>{{ entry.title }}</strong>
+                {% else %}
+                <input name="title" type="text" class="wide-input" value="" />
+                {% end %}
+            </div>
             <div style="margin-bottom:5px"><input name="description" type="text" class="wide-input" value="{{ entry.description if entry else "" }}"/></div>
             <div style="margin-bottom:5px"><textarea name="body" rows="30" cols="40" class="wide-input">{{ entry.body if entry else "" }}</textarea></div>
             <div>
