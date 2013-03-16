@@ -4,7 +4,7 @@
     {%if author%}Submitted by {{author.name }}, on{%else%}Posted {%end%} 
     {{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>
   <div class="description top_pad">{{ entry.description }}</div>
-  <div class="script_output"><pre>{% raw entry.body %}</pre></div>
+  <div class="script_output"><pre>{{ entry.body }}</pre></div>
   <div class="admin">
       {% if current_user.id == entry.author_id %}
         <a href="/compose?id={{ entry.id }}">{{ _("Edit this post") }}</a>
