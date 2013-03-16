@@ -42,3 +42,12 @@ CREATE TABLE authors (
     email VARCHAR(100) NOT NULL UNIQUE,
     name VARCHAR(100) NOT NULL
 );
+
+DROP TABLE IF EXISTS files;
+CREATE TABLE files (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    file_name VARCHAR(100) NOT NULL UNIQUE,
+    file_path VARCHAR(100) NOT NULL,
+    downloads INT DEFAULT '0'
+);
+INSERT INTO `files` (`id`, `file_name`, `file_path`, `downloads`) VALUES (NULL, 'AnvilMGv0.1.zip', 'AnvilMGv0.1.zip', '0');
