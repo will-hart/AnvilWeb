@@ -27,26 +27,35 @@ import unicodedata
 
 from tornado.options import define, options
 
-define("port", default=8888, help="run on the given port", type=int)
-define("mysql_host", default="127.0.0.1:3306", help="blog database host")
-define("mysql_database", default="blog", help="blog database name")
-define("mysql_user", default="blog", help="blog database user")
-define("mysql_password", default="blog", help="blog database password")
-
+"""
+local_settings.py contains the database definitions.  Some
+defaults are provided below for local testing purposes
+and the production settings are in local_settings.py
+"""
+try:
+    from local_settings import *
+except ImportError, e:
+    print " * There was an import error getting local_settings - applying defaults"
+    define("port", default=8888, help="run on the given port", type=int)
+    define("mysql_host", default="127.0.0.1:3306", help="blog database host")
+    define("mysql_database", default="anvilscript_testdb", help="blog database name")
+    define("mysql_user", default="test_user", help="blog database user")
+    define("mysql_password", default="test_pass", help="blog database password")
 
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/", HomeHandler),
-            (r"/archive", ArchiveHandler),
             (r"/feed", FeedHandler),
             (r"/entry/([^/]+)", EntryHandler),
+            (r"/raw/([^/]+)", RawEntryHandler),
             (r"/compose", ComposeHandler),
+            (r"/profile", ProfileHandler),
             (r"/auth/login", AuthLoginHandler),
             (r"/auth/logout", AuthLogoutHandler),
         ]
         settings = dict(
-            blog_title=u"Tornado Blog",
+            site_title=u"AnvilMG Script Directory",
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
             ui_modules={"Entry": EntryModule},
@@ -69,10 +78,21 @@ class BaseHandler(tornado.web.RequestHandler):
         return self.application.db
 
     def get_current_user(self):
-        user_id = self.get_secure_cookie("blogdemo_user")
+        user_id = self.get_secure_cookie("anvilscript_cookie")
         if not user_id: return None
         return self.db.get("SELECT * FROM authors WHERE id = %s", int(user_id))
 
+
+class ProfileHandler(BaseHandler):
+    """
+    Shows either the user profile or a default page showing
+    scripts created by the user
+    """
+    def get(self):
+        raise tornado.web.HTTPError(404)
+
+    def post(self):
+        raise tornado.web.HTTPError(404)
 
 class HomeHandler(BaseHandler):
     def get(self):
@@ -91,17 +111,17 @@ class EntryHandler(BaseHandler):
         self.render("entry.html", entry=entry)
 
 
-class ArchiveHandler(BaseHandler):
-    def get(self):
-        entries = self.db.query("SELECT * FROM entries ORDER BY published "
-                                "DESC")
-        self.render("archive.html", entries=entries)
+class RawEntryHandler(BaseHandler):
+    def get(self, slug):
+        entry = self.db.get("SELECT * FROM entries WHERE slug = %s", slug)
+        if not entry: raise tornado.web.HTTPError(404)
+        self.render("raw_entry.html", entry=entry)
 
 
 class FeedHandler(BaseHandler):
     def get(self):
-        entries = self.db.query("SELECT * FROM entries ORDER BY published "
-                                "DESC LIMIT 10")
+        entries = self.db.query("SELECT title, description FROM entries ORDER BY published "
+                                "DESC LIMIT 100")
         self.set_header("Content-Type", "application/atom+xml")
         self.render("feed.xml", entries=entries)
 
@@ -119,15 +139,15 @@ class ComposeHandler(BaseHandler):
     def post(self):
         id = self.get_argument("id", None)
         title = self.get_argument("title")
-        text = self.get_argument("markdown")
-        html = markdown.markdown(text)
+        description = self.get_argument("description")
+        body = self.get_argument("body")
         if id:
             entry = self.db.get("SELECT * FROM entries WHERE id = %s", int(id))
             if not entry: raise tornado.web.HTTPError(404)
             slug = entry.slug
             self.db.execute(
-                "UPDATE entries SET title = %s, markdown = %s, html = %s "
-                "WHERE id = %s", title, text, html, int(id))
+                "UPDATE entries SET title = %s, description = %s, body = %s "
+                "WHERE id = %s", title, description, body, int(id))
         else:
             slug = unicodedata.normalize("NFKD", title).encode(
                 "ascii", "ignore")
@@ -139,9 +159,9 @@ class ComposeHandler(BaseHandler):
                 if not e: break
                 slug += "-2"
             self.db.execute(
-                "INSERT INTO entries (author_id,title,slug,markdown,html,"
+                "INSERT INTO entries (author_id,title,slug,description,body,"
                 "published) VALUES (%s,%s,%s,%s,%s,UTC_TIMESTAMP())",
-                self.current_user.id, title, slug, text, html)
+                self.current_user.id, title, slug, description, body)
         self.redirect("/entry/" + slug)
 
 
@@ -170,13 +190,13 @@ class AuthLoginHandler(BaseHandler, tornado.auth.GoogleMixin):
                 return
         else:
             author_id = author["id"]
-        self.set_secure_cookie("blogdemo_user", str(author_id))
+        self.set_secure_cookie("anvilscript_cookie", str(author_id))
         self.redirect(self.get_argument("next", "/"))
 
 
 class AuthLogoutHandler(BaseHandler):
     def get(self):
-        self.clear_cookie("blogdemo_user")
+        self.clear_cookie("anvilscript_cookie")
         self.redirect(self.get_argument("next", "/"))
 
 

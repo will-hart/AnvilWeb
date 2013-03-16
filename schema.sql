@@ -29,8 +29,8 @@ CREATE TABLE entries (
     author_id INT NOT NULL REFERENCES authors(id),
     slug VARCHAR(100) NOT NULL UNIQUE,
     title VARCHAR(512) NOT NULL,
-    markdown MEDIUMTEXT NOT NULL,
-    html MEDIUMTEXT NOT NULL,
+    description MEDIUMTEXT NOT NULL,
+    body MEDIUMTEXT NOT NULL,
     published DATETIME NOT NULL,
     updated TIMESTAMP NOT NULL,
     KEY (published)

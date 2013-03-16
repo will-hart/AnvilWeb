@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-    <title>{{ escape(handler.settings["blog_title"]) }}</title>
+    <title>{{ escape(handler.settings["site_title"]) }}</title>
     <link rel="stylesheet" href="{{ static_url("blog.css") }}" type="text/css"/>
-    <link rel="alternate" href="/feed" type="application/atom+xml" title="{{ escape(handler.settings["blog_title"]) }}"/>
+    <link rel="alternate" href="/feed" type="application/atom+xml" title="{{ escape(handler.settings["site_title"]) }}"/>
     {% block head %}{% end %}
   </head>
   <body>
@@ -18,7 +18,7 @@
             {{ _('<a href="%(url)s">Sign in</a> to compose/edit') % {"url": "/auth/login?next=" + url_escape(request.uri)} }}
           {% end %}
         </div>
-        <h1><a href="/">{{ escape(handler.settings["blog_title"]) }}</a></h1>
+        <h1><a href="/">{{ escape(handler.settings["site_title"]) }}</a></h1>
       </div>
       <div id="content">{% block body %}{% end %}</div>
     </div>

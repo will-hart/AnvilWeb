@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   {% set date_format = "%Y-%m-%dT%H:%M:%SZ" %}
-  <title>{{ handler.settings["blog_title"] }}</title>
+  <title>{{ handler.settings["site_title"] }}</title>
   {% if len(entries) > 0 %}
     <updated>{{ max(e.updated for e in entries).strftime(date_format) }}</updated>
   {% else %}
     <updated>{{ datetime.datetime.utcnow().strftime(date_format) }}</updated>
   {% end %}
   <id>http://{{ request.host }}/</id>
-  <link rel="alternate" href="http://{{ request.host }}/" title="{{ handler.settings["blog_title"] }}" type="text/html"/>
-  <link rel="self" href="{{ request.full_url() }}" title="{{ handler.settings["blog_title"] }}" type="application/atom+xml"/>
-  <author><name>{{ handler.settings["blog_title"] }}</name></author>
+  <link rel="alternate" href="http://{{ request.host }}/" title="{{ handler.settings["site_title"] }}" type="text/html"/>
+  <link rel="self" href="{{ request.full_url() }}" title="{{ handler.settings["site_title"] }}" type="application/atom+xml"/>
+  <author><name>{{ handler.settings["site_title"] }}</name></author>
   {% for entry in entries %}
     <entry>
       <id>http://{{ request.host }}/entry/{{ entry.slug }}</id>
