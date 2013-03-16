@@ -50,4 +50,4 @@ CREATE TABLE files (
     file_path VARCHAR(100) NOT NULL,
     downloads INT DEFAULT '0'
 );
-INSERT INTO `files` (`id`, `file_slug`, `file_path`, `downloads`) VALUES (NULL, 'AnvilMGv0.1.zip', 'AnvilMGv0.1.zip', '0');
+INSERT INTO `files` (`id`, `file_slug`, `file_path`, `downloads`) VALUES (NULL, '0.1', 'AnvilMGv0.1.zip', '0');
