@@ -49,6 +49,7 @@ class Application(tornado.web.Application):
             (r"/feed", FeedHandler),
             (r"/downloads", DownloadHandler),
             (r"/gallery", GalleryHandler),
+            (r"/browse", BrowseHandler),
             (r"/serve/([^/]+)", FileServeHandler),
             (r"/entry/([^/]+)", EntryHandler),
             (r"/raw/([^/]+)", RawEntryHandler),
@@ -93,6 +94,18 @@ class ProfileHandler(BaseHandler):
     """
     def get(self):
         raise tornado.web.HTTPError(404)
+
+    def post(self):
+        raise tornado.web.HTTPError(404)
+
+
+class BrowseHandler(BaseHandler):
+    """
+    Allows browsing of scripts
+    """
+    def get(self):
+        entries = self.db.query("SELECT * FROM entries ORDER BY updated DESC LIMIT 15")
+        self.render("browse.html", entries=entries)
 
     def post(self):
         raise tornado.web.HTTPError(404)

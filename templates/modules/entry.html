@@ -1,10 +1,10 @@
-<div class="entry">
-  <h1><a href="/entry/{{ entry.slug }}">{{ entry.title }}</a></h1>
-  <div class="meta">
+<div class="entry top_pad">
+  <h3><a href="/entry/{{ entry.slug }}">{{ entry.title }}</a></h3>
+  <div class="meta small">
     {%if author%}Submitted by {{author.name }}, on{%else%}Posted {%end%} 
     {{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>
-  <div class="description">{{ entry.description }}</div>
-  <div class="body">{% raw entry.body %}</div>
+  <div class="description top_pad">{{ entry.description }}</div>
+  <div class="script_output"><pre>{% raw entry.body %}</pre></div>
   <div class="admin">
       {% if current_user.id == entry.author_id %}
         <a href="/compose?id={{ entry.id }}">{{ _("Edit this post") }}</a>
