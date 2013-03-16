@@ -107,6 +107,13 @@ textarea.wide-input { height: 60%; }
     text-align:right;
 }
 
+.search_box {
+    padding: 20px;
+    border:1px solid #DDD;
+    background:#EEE;
+    margin: 10px 0 20px 0;
+}
+
 /* #Media Queries
 ================================================== */
 

@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
 {% block body %}
+    
+    <div class="search_box sixteen columns alpha omega">
+        <h4>Search</h4>
+        <form action="{{ request.path }}" method="post">
+            <input type="text" name="search" id="search" placeholder="Search scripts" />
+            <button type="submit" value="Search">Search</button>
+            {% module xsrf_form_html() %}
+        </form>
+    </div>
+
     <div class="sixteen columns alpha omega top_pad">
     {%if entries%}
         {% for entry in entries %}

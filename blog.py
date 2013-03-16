@@ -110,8 +110,18 @@ class BrowseHandler(BaseHandler):
         entries = self.db.query("SELECT * FROM entries ORDER BY updated DESC LIMIT 15 OFFSET %s" % offset)
         self.render("browse.html", entries=entries)
 
-    def post(self):
-        raise tornado.web.HTTPError(404)
+    def post(self, page=1):
+        search_term = self.get_argument("search","")
+        if search_term == "":
+            self.redirect('/browse')
+
+        records_per_page = 15
+        offset = records_per_page * (int(page) - 1)
+        sql = "SELECT * FROM entries WHERE description LIKE '%%%%%s" % search_term
+        sql += "%%%%' ORDER BY updated DESC LIMIT 15 OFFSET %s" % offset
+        print sql
+        entries = self.db.query(sql)
+        self.render("browse.html", entries=entries)
 
 
 class HomeHandler(BaseHandler):
