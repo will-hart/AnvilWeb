@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="850"
+   height="300"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Banner.svg"
+   inkscape:export-filename="C:\Users\mecharius\Desktop\Anvil\images\banner.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="405.38997"
+     inkscape:cy="237.30834"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1904"
+     inkscape:window-height="1178"
+     inkscape:window-x="1358"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-752.36217)">
+    <g
+       id="g3782"
+       transform="matrix(2.3693739,0,0,2.3693739,-1120.7759,-1039.1265)">
+      <rect
+         ry="13.571428"
+         transform="translate(0,702.36217)"
+         y="100.71429"
+         x="497.85715"
+         height="38.57143"
+         width="154.28572"
+         id="rect3780"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text3764"
+         y="802.45605"
+         x="671.01587"
+         style="font-size:28.07813072px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Capture it;-inkscape-font-specification:Capture it"
+         xml:space="preserve"><tspan
+           style="font-weight:normal;line-height:100%;-inkscape-font-specification:Capture it"
+           y="802.45605"
+           x="671.01587"
+           id="tspan3766"
+           sodipodi:role="line">ARMA </tspan><tspan
+           style="font-weight:normal;line-height:100%;-inkscape-font-specification:Capture it"
+           id="tspan3768"
+           y="830.53418"
+           x="671.01587"
+           sodipodi:role="line">Mission </tspan><tspan
+           style="font-weight:normal;line-height:100%;-inkscape-font-specification:Capture it"
+           id="tspan3770"
+           y="858.6123"
+           x="671.01587"
+           sodipodi:role="line">GENERATOR</tspan></text>
+      <path
+         transform="translate(0,702.36217)"
+         inkscape:connector-curvature="0"
+         id="path3772"
+         d="m 663.57143,155 0,-75"
+         style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3774"
+         y="832.36218"
+         x="505.71429"
+         style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Capture it;-inkscape-font-specification:Capture it"
+         xml:space="preserve"><tspan
+           y="832.36218"
+           x="505.71429"
+           id="tspan3776"
+           sodipodi:role="line">ANVIL<tspan
+   id="tspan3778"
+   style="fill:#800000">MG</tspan></tspan></text>
+    </g>
+    <g
+       id="g3836"
+       inkscape:export-filename="C:\Code\Anvil\dependencies\banner.png"
+       inkscape:export-xdpi="72.400002"
+       inkscape:export-ydpi="72.400002">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3795"
+         width="175.84213"
+         height="43.960533"
+         x="292.14285"
+         y="595.7312"
+         ry="15.467594" />
+      <text
+         xml:space="preserve"
+         style="font-size:32.00113678px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Capture it;-inkscape-font-specification:Capture it"
+         x="489.4949"
+         y="595.02411"
+         id="text3797"
+         sodipodi:linespacing="100%"><tspan
+           sodipodi:role="line"
+           id="tspan3799"
+           x="489.4949"
+           y="595.02411"
+           style="font-weight:normal;line-height:100%;-inkscape-font-specification:Capture it">ARMA </tspan><tspan
+           sodipodi:role="line"
+           x="489.4949"
+           y="627.02527"
+           id="tspan3801"
+           style="font-weight:normal;line-height:100%;-inkscape-font-specification:Capture it">Mission </tspan><tspan
+           sodipodi:role="line"
+           x="489.4949"
+           y="659.02637"
+           id="tspan3803"
+           style="font-weight:normal;line-height:100%;-inkscape-font-specification:Capture it">GENERATOR</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:4.55886984;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 481.01033,657.60158 0,-85.47881"
+         id="path3805"
+         inkscape:connector-curvature="0" />
+      <text
+         xml:space="preserve"
+         style="font-size:36.47095871px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Capture it;-inkscape-font-specification:Capture it"
+         x="301.09778"
+         y="629.10864"
+         id="text3807"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3809"
+           x="301.09778"
+           y="629.10864">Anvil<tspan
+   style="fill:#800000"
+   id="tspan3811">MG</tspan></tspan></text>
+    </g>
+    <g
+       id="g3830"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\Anvil\images\logo.png"
+       inkscape:export-xdpi="76.769997"
+       inkscape:export-ydpi="76.769997">
+      <rect
+         ry="15.467594"
+         y="646.4455"
+         x="-17.142862"
+         height="43.960533"
+         width="175.84213"
+         id="rect3822"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3824"
+         y="679.82294"
+         x="-8.1879358"
+         style="font-size:36.47095871px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Capture it;-inkscape-font-specification:Capture it"
+         xml:space="preserve"><tspan
+           y="679.82294"
+           x="-8.1879358"
+           id="tspan3826"
+           sodipodi:role="line">ANvil<tspan
+   id="tspan3828"
+   style="fill:#800000">MG</tspan></tspan></text>
+    </g>
+  </g>
+</svg>
