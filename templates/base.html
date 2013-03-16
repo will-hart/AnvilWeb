@@ -1,14 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
     <title>{{ escape(handler.settings["site_title"]) }}</title>
-    <link rel="stylesheet" href="{{ static_url("css/blog.css") }}" type="text/css"/>
+    <meta name="description" content="A mission generator and SQF script repository for Arma, Arma2 and Arma3">
+    <meta name="keywords" content="Arma, Arma2, ArmaII, Arma3, Arma3, Armed Assault, mission development, scripting, mission generator, mission">
+    
+    <link rel="stylesheet" href="{{ static_url("css/base.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("css/skeleton.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("css/layout.css") }}" type="text/css"/>
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
     <link rel="alternate" href="/feed" type="application/atom+xml" title="{{ escape(handler.settings["site_title"]) }}"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="{{ static_url("images/favicon.ico") }}">
+	<link rel="apple-touch-icon" href="{{ static_url("images/apple-touch-icon.png") }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ static_url("images/apple-touch-icon-72x72.png") }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ static_url("images/apple-touch-icon-114x114.png") }}">
+
     {% block head %}{% end %}
   </head>
   <body>
-    <div id="body">
+    <div>
+      {% block content %}
       <div id="header">
         <div style="float:right">
           {% if current_user %}
@@ -23,5 +47,6 @@
       <div id="content">{% block body %}{% end %}</div>
     </div>
     {% block bottom %}{% end %}
+    {%end%}
   </body>
 </html>
