@@ -1,7 +1,7 @@
 <div class="entry top_pad">
     <h3>{{ entry.title }}</h3>
     <div class="meta small">
-        {% if current_user.id == entry.author_id %}
+        {% if current_user and current_user.id == entry.author_id %}
         <a href="/compose?id={{ entry.id }}">{{ _("Edit") }}</a> - 
         {% end %}
         <a href="/raw/{{ entry.slug }}">{{ _("View Raw") }}</a> - 
