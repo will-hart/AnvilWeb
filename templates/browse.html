@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block body %}
-  {% for entry in entries %}
-    {% module Entry(entry, None) %}
-  {% end %}
-  <div><a href="/archive">{{ _("Archive") }}</a></div>
+    <div class="sixteen columns alpha omega top_pad">
+        {% for entry in entries %}
+        <div class="browse_entry">
+            <h3>{{ entry.title }}</h3>
+            <p>{{ entry.description }}</p>
+        </div>
+        <hr>
+        {% end %}
+    </div>
 {% end %}
