@@ -35,12 +35,12 @@
       {% block content %}        
         <div id="body_container">
             <div class="container">
-                <div class="twelve columns alpha">
+                <div class="ten columns alpha">
                     <p class="light_text">
                         <a href="/"><img class="logo_image" src="{{ static_url("img/logo.png") }}" alt="ArmaMG Logo"></a>
                     </p>
                 </div>
-                <div class="four columns omega small">
+                <div class="six columns omega menu">
                     {% if current_user %}
                         <a href="/compose">{{ _("New script") }}</a> -
                         <a href="/profile">{{ _("Profile") }}</a> - 
