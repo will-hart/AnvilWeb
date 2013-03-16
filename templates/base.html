@@ -47,7 +47,9 @@
                         <a href="/profile">{{ _("Profile") }}</a> - 
                         <a href="/auth/logout?next={{ url_escape(request.uri) }}">{{ _("Sign out") }}</a>
                     {% else %}
-                        {{ _('<a href="%(url)s">Sign in</a> to compose/edit') % {"url": "/auth/login?next=" + url_escape(request.uri)} }}
+                        Sign in with 
+                        <a href="/auth/login?next={{ url_escape(request.uri) }}">Google</a> or 
+                        
                     {% end %}
                 </div>
             </div><!-- container -->
