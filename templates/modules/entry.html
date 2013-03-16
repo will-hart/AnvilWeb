@@ -1,13 +1,14 @@
 <div class="entry">
   <h1><a href="/entry/{{ entry.slug }}">{{ entry.title }}</a></h1>
-  <div class="date">{{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>
+  <div class="meta">
+    {%if author%}Submitted by {{author.name }}, on{%else%}Posted {%end%} 
+    {{ locale.format_date(entry.published, full_format=True, shorter=True) }}</div>
   <div class="description">{{ entry.description }}</div>
   <div class="body">{% raw entry.body %}</div>
   <div class="admin">
       {% if current_user.id == entry.author_id %}
         <a href="/compose?id={{ entry.id }}">{{ _("Edit this post") }}</a>
       {% end %}
-      <a href="/raw?id={{ entry.id }}">{{ _("View Raw Script") }}</a>
+      <a href="/raw/{{ entry.slug }}">{{ _("View Raw Script") }}</a>
   </div>
-  
 </div>

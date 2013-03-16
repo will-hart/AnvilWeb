@@ -94,6 +94,7 @@ class ProfileHandler(BaseHandler):
     def post(self):
         raise tornado.web.HTTPError(404)
 
+
 class HomeHandler(BaseHandler):
     def get(self):
         entries = self.db.query("SELECT * FROM entries ORDER BY published "
@@ -108,13 +109,19 @@ class EntryHandler(BaseHandler):
     def get(self, slug):
         entry = self.db.get("SELECT * FROM entries WHERE slug = %s", slug)
         if not entry: raise tornado.web.HTTPError(404)
-        self.render("entry.html", entry=entry)
+        author = self.db.get("SELECT * FROM authors WHERE id = %s", entry.author_id)
+        if not author: raise tornado.web.HTTPError(404)
+        print "-------"
+        print author
+        print "=------"
+        self.render("entry.html", entry=entry, author=author)
 
 
 class RawEntryHandler(BaseHandler):
     def get(self, slug):
         entry = self.db.get("SELECT * FROM entries WHERE slug = %s", slug)
         if not entry: raise tornado.web.HTTPError(404)
+        self.set_header('Content-Type', 'text/plain')
         self.render("raw_entry.html", entry=entry)
 
 
@@ -201,8 +208,8 @@ class AuthLogoutHandler(BaseHandler):
 
 
 class EntryModule(tornado.web.UIModule):
-    def render(self, entry):
-        return self.render_string("modules/entry.html", entry=entry)
+    def render(self, entry, author=None):
+        return self.render_string("modules/entry.html", entry=entry, author=author)
 
 
 def main():
