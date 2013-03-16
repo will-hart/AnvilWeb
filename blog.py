@@ -174,7 +174,7 @@ class ComposeHandler(BaseHandler):
         id = self.get_argument("id", None)
         title = self.get_argument("title", "")
         description = self.get_argument("description")
-        body = self.get_argument("body")
+        body = self.get_argument("body", "")
         if id:
             entry = self.db.get("SELECT * FROM entries WHERE id = %s", int(id))
             if not entry: raise tornado.web.HTTPError(404)
