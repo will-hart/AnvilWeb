@@ -55,14 +55,14 @@
                         </a>
                     {% end %}
                 </div>
+                
             </div><!-- container -->
         </div><!-- body container -->
         
         
         <div class="container">
-        {% block body %}
-        
-        {% end %}
+        {% block body %}{% end %}
+        {% block comments %}{% end %}
         </div>
     </div>
     {% block bottom %}{% end %}
