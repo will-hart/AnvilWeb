@@ -108,11 +108,19 @@ textarea.wide-input { height: 60%; }
 }
 
 .search_box {
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     border:1px solid #DDD;
     background:#EEE;
     margin: 10px 0 20px 0;
 }
+
+.browse-entry { margin-bottom: 40px; }
+.browse-entry a { text-decoration: none; }
+.browse-entry a:hover { text-decoration: underline; }
+
+.parsley-error-list li { font-size: 0.6em; color: #A22; }
+input.parsley-error { background: rgb(255, 223, 223); border: 2px solid red; }
+input.parsley-success { background: rgb(233, 255, 231); }
 
 /* #Media Queries
 ================================================== */
@@ -125,6 +133,7 @@ textarea.wide-input { height: 60%; }
         #main_banner{ display:none; }
         #small_banner { display:inline-block; margin: 10px auto 30px auto; }
         #hero_container { min-height: 50px; }
+        .menu { text-align:center; padding-top: 20px; }
     }
 
 	/* All Mobile Sizes (devices and browser) */
@@ -132,6 +141,7 @@ textarea.wide-input { height: 60%; }
         #main_banner{ display:none; }
         #small_banner { display:inline-block; margin: 10px auto 30px auto; }
         #hero_container { min-height: 50px; }
+        .menu { text-align:center; padding-top: 20px; }
     }
 
 	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block head %}
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="{{ static_url("js/parsley.js") }}"></script>
         <script src="{{ static_url("js/codemirror.js") }}"></script>
         <script src="{{ static_url("js/codemirror.mode.clike.js") }}"></script>
         <script src="{{ static_url("js/editor.js") }}"></script>
@@ -13,15 +15,15 @@
 {% block body %}
     <div class="sixteen columns alpha omega top_pad">
         <h3>Edit Script</h3>
-        <form action="{{ request.path }}" method="post">
+        <form action="{{ request.path }}" method="post" data-validate="parsley">
             <div class="top_pad" style="margin-bottom:5px">
                 {% if entry %}
                 <strong>{{ entry.title }}</strong>
                 {% else %}
-                <input name="title" type="text" class="wide-input" value="" />
+                <input name="title" placeholder="Script Name" type="text" class="wide-input" value="" data-trigger="keyup" data-required="true" data-type="alphanum" data-rangelength="[4,64]" />
                 {% end %}
             </div>
-            <div style="margin-bottom:5px"><input name="description" type="text" class="wide-input" value="{{ entry.description if entry else "" }}"/></div>
+            <div style="margin-bottom:5px"><input placeholder="Script Description" name="description" type="text" class="wide-input" value="{{ entry.description if entry else "" }}" data-trigger="keyup" data-required="true"/></div>
             <div style="margin-bottom:5px"><textarea name="body" id="editor" rows="30" cols="40" class="wide-input">{{ entry.body if entry else "" }}</textarea></div>
             <div>
               <input type="submit" value="{{ _("Save changes") if entry else _("Publish script") }}" class="submit"/>
