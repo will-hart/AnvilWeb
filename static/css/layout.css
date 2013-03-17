@@ -30,7 +30,7 @@ blockquote { padding-bottom: 10px; border-left: 4px solid #888; font-style: norm
 }
 
 #header_container {
-    min-height: 50px;
+    min-height: 30px;
     padding:10px 0 5px 5px;
 }
 
@@ -41,6 +41,8 @@ blockquote { padding-bottom: 10px; border-left: 4px solid #888; font-style: norm
     padding-top: 50px;
     padding-bottom: 30px;
 }
+
+.menu_pad { padding: 20px 0 20px 0 !important; margin-bottom: 30px !important; }
 
 .top_pad {
     padding-top: 30px;
@@ -106,6 +108,8 @@ textarea.wide-input { height: 60%; }
     font-size: 0.9em; 
     text-align:right;
 }
+
+.menu > a > img { position: relative; top: 10px; }
 
 .search_box {
     padding: 20px 20px 0 20px;
