@@ -138,7 +138,6 @@ class BrowseHandler(BaseHandler):
         offset = records_per_page * (int(page) - 1)
         sql = "SELECT * FROM entries WHERE description LIKE '%%%%%s" % search_term
         sql += "%%%%' ORDER BY updated DESC LIMIT 15 OFFSET %s" % offset
-        print sql
         entries = self.db.query(sql)
         self.render("browse.html", entries=entries)
 
@@ -169,7 +168,6 @@ class FileServeHandler(BaseHandler):
         # increase the download count
         sql = "UPDATE files SET downloads = downloads + 1" +\
             " WHERE file_slug = '%s'" % file_name
-        print sql
         self.db.execute(sql);
         
         # add headers
@@ -186,9 +184,6 @@ class EntryHandler(BaseHandler):
         entry = self.db.get("SELECT * FROM entries WHERE slug = %s", slug)
         if not entry: raise tornado.web.HTTPError(404)
         author = self.db.get("SELECT * FROM authors WHERE id = %s", entry.author_id)
-        print "-------"
-        print author
-        print "=------"
         self.render("entry.html", entry=entry, author=author)
 
 
