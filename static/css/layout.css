@@ -23,7 +23,7 @@ blockquote { padding-bottom: 10px; border-left: 4px solid #888; font-style: norm
 /* #Page Styles
 ================================================== */
 #hero_container, #header_container {
-    background: #484848; /** rgb(62, 77, 92); /**#2C3E50; /**#E74C3C;**/
+    background: #2C3E50;
     min-height: 350px;
     width: 100%;
     margin:0 auto;

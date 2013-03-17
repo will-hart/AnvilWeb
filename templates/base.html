@@ -41,17 +41,17 @@
                     </p>
                 </div>
                 <div class="six columns omega menu">
-                    <a href="/browse">Browse Scripts</a> - 
+                    <a href="/browse">{{ _("Browse") }}</a> - 
                     {% if current_user %}
-                        <a href="/compose">{{ _("New script") }}</a> -
+                        <a href="/compose">{{ _("New") }}</a> -
                         <a href="/profile">{{ _("Profile") }}</a> - 
                         <a href="/auth/logout?next={{ url_escape(request.uri) }}">{{ _("Sign out") }}</a>
                     {% else %}
                         Sign in with 
                         <a href="/auth/login?next={{ url_escape(request.uri) }}">
-                            <img src="{{ static_url("img/social/google-32x32.png") }}" title="Google" alt="Google Login"/></a>
+                            <img src="{{ static_url("img/social/google.png") }}" title="Google" width="32" height="32" alt="Google Login"/></a>
                         <a href="/auth/fblogin?next={{ url_escape(request.uri) }}">
-                            <img src="{{ static_url("img/social/facebook-32x32.png") }}" title="Facebook" alt="Facebook Login" />
+                            <img src="{{ static_url("img/social/facebook.png") }}" title="Facebook" width="32" height="32" alt="Facebook Login" />
                         </a>
                     {% end %}
                 </div>
