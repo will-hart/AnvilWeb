@@ -200,10 +200,9 @@ class RawEntryHandler(BaseHandler):
 
 class FeedHandler(BaseHandler):
     def get(self):
-        entries = self.db.query("SELECT title, description FROM entries ORDER BY published "
-                                "DESC LIMIT 100")
-        self.set_header("Content-Type", "application/atom+xml")
-        self.render("feed.xml", entries=entries)
+        entries = self.db.query("SELECT title, description, revision FROM entries ORDER BY published DESC")
+        self.set_header("Content-Type", "application/json")
+        self.write(json.dumps(entries))
 
 
 class ComposeHandler(BaseHandler):
