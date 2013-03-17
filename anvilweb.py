@@ -65,7 +65,7 @@ class Application(tornado.web.Application):
             (r"/auth/login", GoogleLoginHandler),
             (r"/auth/fblogin", FacebookLoginHandler),
             (r"/auth/logout", AuthLogoutHandler),
-            (r"/sitemap.xml", tornado.web.StaticFileHandler, {'path': 'sitemap.xml'}),
+            (r"/sitemap.xml", SitemapHandler),
         ]
         settings = dict(
             site_title=u"AnvilMG Script Directory",
@@ -107,6 +107,11 @@ class BaseHandler(tornado.web.RequestHandler):
             author_id = author["id"]
         self.set_secure_cookie("anvilscript_cookie", str(author_id))
         self.redirect(self.get_argument("next", "/"))
+
+
+class SitemapHandler(BaseHandler):
+    def get(self):
+        self.render("sitemap.xml")
 
 
 class ProfileHandler(BaseHandler):
