@@ -7,7 +7,9 @@
         <a href="/raw/{{ entry.slug }}">{{ _("View Raw") }}</a> - 
         
         {%if author%}Submitted by {{author.name }}, on{%else%}Posted {%end%} 
-        {{ locale.format_date(entry.published, full_format=True, shorter=True) }}
+        {{ locale.format_date(entry.published, full_format=True, shorter=True) }},
+        
+        revision {{entry.revision}}
     </div>
 
     <div class="description top_pad"><blockquote>{{ entry.description }}</blockquote></div>

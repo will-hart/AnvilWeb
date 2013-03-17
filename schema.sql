@@ -31,6 +31,7 @@ CREATE TABLE entries (
     title VARCHAR(512) NOT NULL,
     description MEDIUMTEXT NOT NULL,
     body MEDIUMTEXT NOT NULL,
+    revision INT DEFAULT '0',
     published DATETIME NOT NULL,
     updated TIMESTAMP NOT NULL,
     KEY (published)

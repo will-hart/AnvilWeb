@@ -226,7 +226,7 @@ class ComposeHandler(BaseHandler):
             if not entry: raise tornado.web.HTTPError(404)
             slug = entry.slug
             self.db.execute(
-                "UPDATE entries SET description = %s, body = %s "
+                "UPDATE entries SET description = %s, body = %s, revision = revision + 1 "
                 "WHERE id = %s", description, body, int(id))
         else:
             slug = unicodedata.normalize("NFKD", title).encode(
@@ -240,7 +240,7 @@ class ComposeHandler(BaseHandler):
                 slug += "-2"
             self.db.execute(
                 "INSERT INTO entries (author_id,title,slug,description,body,"
-                "published) VALUES (%s,%s,%s,%s,%s,UTC_TIMESTAMP())",
+                "published,revision) VALUES (%s,%s,%s,%s,%s,UTC_TIMESTAMP(),0)",
                 self.current_user.id, title, slug, description, body)
         self.redirect("/entry/" + slug)
 
