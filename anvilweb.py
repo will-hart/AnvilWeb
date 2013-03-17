@@ -17,6 +17,7 @@
 import json
 import os.path
 import re
+import sys
 import torndb
 import tornado.auth
 import tornado.httpserver
