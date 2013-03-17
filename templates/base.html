@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title>{{ escape(handler.settings["site_title"]) }}</title>
+    <meta name="description" content="A mission generator and SQF script repository for Arma, Arma2 and Arma3">
+    <meta name="keywords" content="Arma, Arma2, ArmaII, Arma3, Arma3, Armed Assault, mission development, scripting, mission generator, mission">
+    
+    <link rel="stylesheet" href="{{ static_url("css/base.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("css/skeleton.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("css/layout.css") }}" type="text/css"/>
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <link rel="alternate" href="/feed" type="application/atom+xml" title="{{ escape(handler.settings["site_title"]) }}"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="{{ static_url("img/favicon.ico") }}">
+	<link rel="apple-touch-icon" href="{{ static_url("img/apple-touch-icon.png") }}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ static_url("img/apple-touch-icon-72x72.png") }}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ static_url("img/apple-touch-icon-114x114.png") }}">
+
+    {% block head %}{% end %}
+  </head>
+  <body>
+    <div>
+      {% block content %}        
+        <div id="body_container" class="menu_pad">
+            <div class="container">
+                <div class="ten columns alpha">
+                    <p class="light_text">
+                        <a href="/"><img class="logo_image" src="{{ static_url("img/logo.png") }}" alt="ArmaMG Logo"></a>
+                    </p>
+                </div>
+                <div class="six columns omega menu">
+                    <a href="/browse">{{ _("Browse") }}</a> - 
+                    {% if current_user %}
+                        <a href="/compose">{{ _("New") }}</a> -
+                        <a href="/profile">{{ _("Profile") }}</a> - 
+                        <a href="/auth/logout?next={{ url_escape(request.uri) }}">{{ _("Sign out") }}</a>
+                    {% else %}
+                        Sign in with 
+                        <a href="/auth/login?next={{ url_escape(request.uri) }}">
+                            <img src="{{ static_url("img/social/google.png") }}" title="Google" width="32" height="32" alt="Google Login"/></a>
+                        <a href="/auth/fblogin?next={{ url_escape(request.uri) }}">
+                            <img src="{{ static_url("img/social/facebook.png") }}" title="Facebook" width="32" height="32" alt="Facebook Login" />
+                        </a>
+                    {% end %}
+                </div>
+                
+            </div><!-- container -->
+        </div><!-- body container -->
+        
+        
+        <div class="container">
+        {% block body %}{% end %}
+        {% block comments %}{% end %}
+        </div>
+    </div>
+    {% block bottom %}{% end %}
+    {%end%}
+  </body>
+</html>

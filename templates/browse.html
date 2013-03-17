@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block body %}
+    
+    <div class="search_box sixteen columns alpha omega">
+        <h4>Search</h4>
+        <form action="{{ request.path }}" method="post">
+            <input class="wide-input" type="text" name="search" id="search" placeholder="Search scripts" />
+            <button type="submit" value="Search">Search</button>
+            {% module xsrf_form_html() %}
+        </form>
+    </div>
+
+    {%if entries%}
+        {% for entry in entries %}
+        <div class="five columns alpha browse-entry">
+            <strong><a href="/entry/{{entry.slug}}">{{ entry.title }}.sqs</a></strong>
+        </div>
+        <div class="eleven columns omega browse-entry">
+            {{ entry.description }}
+        </div>
+        {% end %}
+    {% else %}
+    <div class="sixteen columns alpha omega top_pad">
+        <p>
+            No scripts were found! 
+            <a href="/browse">Browse</a> from the first page, or 
+            <a href="/compose">create a new one</a>
+        </p>
+    </div>
+    {% end %}
+{% end %}

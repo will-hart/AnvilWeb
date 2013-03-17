@@ -1,3 +1,4 @@
+local_settings.py
 *.py[cod]
 
 # C extensions
@@ -33,3 +34,4 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+>>>>>>> 5da9758afe6220ad44d75d6bbdc3747fdfca437f

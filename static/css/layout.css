@@ -1,0 +1,174 @@
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+
+/* Table of Content
+==================================================
+	#Site Styles
+	#Page Styles
+	#Media Queries
+	#Font-Face */
+
+/* #Site Styles
+================================================== */
+html, body { font-family: 'Lato', sans-serif; font-size: 1.05em; line-height:1.45; }
+h3 { font-variant: small-caps }
+blockquote { padding-bottom: 10px; border-left: 4px solid #888; font-style: normal; }
+
+/* #Page Styles
+================================================== */
+#hero_container, #header_container {
+    background: #2C3E50;
+    min-height: 350px;
+    width: 100%;
+    margin:0 auto;
+}
+
+#header_container {
+    min-height: 30px;
+    padding:10px 0 5px 5px;
+}
+
+#body_container {
+    background: #c0392b;
+    width: 100%;
+    margin:0 auto;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.menu_pad { padding: 20px 0 20px 0 !important; margin-bottom: 30px !important; }
+
+.top_pad {
+    padding-top: 30px;
+}
+
+.mega_top_pad {
+    padding-top: 120px;
+}
+
+.light_text {
+    color: white;
+}
+
+.small {
+    font-size: 0.7em;
+    margin-top:0;
+}
+
+.hero_button, .hero_button:visited, .hero_button:hover { 
+    display: block;
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.hero_button_blue { 
+    background: #242424;
+}
+.hero_button_blue:hover { 
+    background: #484848;
+}
+.hero_button_red { 
+    background: #c0392b;
+}
+.hero_button_red:hover { 
+    background: #E74C3C;
+}
+
+.logo_image {
+    float:left;
+    margin-right: 15px;
+}
+
+#small_banner { 
+    display:none;
+}
+
+div.script_output > pre {
+    border: 1px solid #CCC;
+    background: #EEE;
+    margin: 30px 0;
+    padding: 20px;
+    font-size: 0.8em;
+}
+
+input.wide-input, textarea.wide-input { min-width: 100%; }
+textarea.wide-input { height: 60%; }
+
+.menu { 
+    font-size: 0.9em; 
+    text-align:right;
+}
+
+.menu > a > img { position: relative; top: 10px; }
+
+.search_box {
+    padding: 20px 20px 0 20px;
+    border:1px solid #DDD;
+    background:#EEE;
+    margin: 10px 0 20px 0;
+}
+
+.browse-entry { margin-bottom: 40px; }
+.browse-entry a { text-decoration: none; }
+.browse-entry a:hover { text-decoration: underline; }
+
+.parsley-error-list li { font-size: 0.6em; color: #A22; }
+input.parsley-error { background: rgb(255, 223, 223); border: 2px solid red; }
+input.parsley-success { background: rgb(233, 255, 231); }
+
+/* #Media Queries
+================================================== */
+
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (max-width: 959px) {}
+
+	/* Tablet Portrait size to standard 960 (devices and browsers) */
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+        #main_banner{ display:none; }
+        #small_banner { display:inline-block; margin: 10px auto 30px auto; }
+        #hero_container { min-height: 50px; }
+        .menu { text-align:center; padding-top: 20px; }
+    }
+
+	/* All Mobile Sizes (devices and browser) */
+	@media only screen and (max-width: 767px) {
+        #main_banner{ display:none; }
+        #small_banner { display:inline-block; margin: 10px auto 30px auto; }
+        #hero_container { min-height: 50px; }
+        .menu { text-align:center; padding-top: 20px; }
+    }
+
+	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+	@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 479px) {}
+
+
+/* #Font-Face
+================================================== */
+/* 	This is the proper syntax for an @font-face file
+		Just create a "fonts" folder at the root,
+		copy your FontName into code below and remove
+		comment brackets */
+
+/*	@font-face {
+	    font-family: 'FontName';
+	    src: url('../fonts/FontName.eot');
+	    src: url('../fonts/FontName.eot?iefix') format('eot'),
+	         url('../fonts/FontName.woff') format('woff'),
+	         url('../fonts/FontName.ttf') format('truetype'),
+	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
+	    font-weight: normal;
+	    font-style: normal; }
+*/
