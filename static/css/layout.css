@@ -99,6 +99,7 @@ div.script_output > pre {
     margin: 30px 0;
     padding: 20px;
     font-size: 0.8em;
+    font-family: 'Droid Sans Mono', monospace;
 }
 
 input.wide-input, textarea.wide-input { min-width: 100%; }
