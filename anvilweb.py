@@ -65,6 +65,7 @@ class Application(tornado.web.Application):
             (r"/auth/login", GoogleLoginHandler),
             (r"/auth/fblogin", FacebookLoginHandler),
             (r"/auth/logout", AuthLogoutHandler),
+            (r"/sitemap.xml", tornado.web.StaticFileHandler, {'path': 'sitemap.xml'}),
         ]
         settings = dict(
             site_title=u"AnvilMG Script Directory",
