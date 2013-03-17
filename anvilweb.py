@@ -25,6 +25,7 @@ import tornado.options
 import tornado.web
 import unicodedata
 
+import rollbar
 from tornado.options import define, options
 
 """
@@ -44,6 +45,7 @@ except ImportError, e:
     define("cookie_secret", default="test_key", help="secret cookie key")
     define("facebook_api_key", default="test_api_key", help="facebook app api key")
     define("facebook_secret", default="test_api_secret", help="facebook api secret")
+    define("debug_mode", default=True, help="default debug mode")
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -73,7 +75,7 @@ class Application(tornado.web.Application):
             facebook_api_key=options.facebook_api_key,
             facebook_secret=options.facebook_secret,
             login_url="/auth/login",
-            debug=True,
+            debug=options.debug_mode,
         )
         tornado.web.Application.__init__(self, handlers, **settings)
 
@@ -136,7 +138,6 @@ class BrowseHandler(BaseHandler):
         offset = records_per_page * (int(page) - 1)
         sql = "SELECT * FROM entries WHERE description LIKE '%%%%%s" % search_term
         sql += "%%%%' ORDER BY updated DESC LIMIT 15 OFFSET %s" % offset
-        print sql
         entries = self.db.query(sql)
         self.render("browse.html", entries=entries)
 
@@ -167,7 +168,6 @@ class FileServeHandler(BaseHandler):
         # increase the download count
         sql = "UPDATE files SET downloads = downloads + 1" +\
             " WHERE file_slug = '%s'" % file_name
-        print sql
         self.db.execute(sql);
         
         # add headers
@@ -184,9 +184,6 @@ class EntryHandler(BaseHandler):
         entry = self.db.get("SELECT * FROM entries WHERE slug = %s", slug)
         if not entry: raise tornado.web.HTTPError(404)
         author = self.db.get("SELECT * FROM authors WHERE id = %s", entry.author_id)
-        print "-------"
-        print author
-        print "=------"
         self.render("entry.html", entry=entry, author=author)
 
 
@@ -295,10 +292,14 @@ class EntryModule(tornado.web.UIModule):
 
 
 def main():
-    tornado.options.parse_command_line()
-    http_server = tornado.httpserver.HTTPServer(Application())
-    http_server.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
+    try:
+        tornado.options.parse_command_line()
+        http_server = tornado.httpserver.HTTPServer(Application())
+        http_server.listen(options.port)
+        tornado.ioloop.IOLoop.instance().start()
+    except:
+        # catch-all error reporting to rollbar
+        rollbar.report_exc_info(sys.exc_info())
 
 
 if __name__ == "__main__":
