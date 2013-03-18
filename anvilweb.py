@@ -204,7 +204,7 @@ class RawEntryHandler(BaseHandler):
 
 class FeedHandler(BaseHandler):
     def get(self):
-        entries = self.db.query("SELECT title, description, revision FROM entries ORDER BY published DESC")
+        entries = self.db.query("SELECT title, slug, description, revision FROM entries ORDER BY published DESC")
         self.set_header("Content-Type", "application/json")
         self.write(json.dumps(entries))
 
