@@ -18,7 +18,7 @@
         <form action="{{ request.path }}" method="post" data-validate="parsley">
             <div class="top_pad" style="margin-bottom:5px">
                 {% if entry %}
-                <strong>{{ entry.title }}</strong>
+                <strong>{{ entry.title }}.sqf</strong>
                 {% else %}
                 <input name="title" placeholder="Script Name" type="text" class="wide-input" value="" data-trigger="keyup" data-required="true" data-type="alphanum" data-rangelength="[4,64]" />
                 {% end %}
