@@ -156,7 +156,8 @@ class HomeHandler(BaseHandler):
 
 class DownloadHandler(BaseHandler):
     def get(self):
-        self.render("download.html")
+        d001 = self.db.get("SELECT downloads FORM files WHERE file_slug='v0.1';")
+        self.render("download.html", d001=d001.downloads)
 
 
 class GalleryHandler(BaseHandler):
