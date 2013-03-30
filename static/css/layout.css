@@ -123,6 +123,8 @@ textarea.wide-input { height: 60%; }
 .browse-entry a { text-decoration: none; }
 .browse-entry a:hover { text-decoration: underline; }
 
+.current-version { background: #ccc; padding: 10px; border: 1px solid #AAA; border-radius: 4px; }
+
 .parsley-error-list li { font-size: 0.6em; color: #A22; }
 input.parsley-error { background: rgb(255, 223, 223); border: 2px solid red; }
 input.parsley-success { background: rgb(233, 255, 231); }
