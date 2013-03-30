@@ -52,6 +52,10 @@ blockquote { padding-bottom: 10px; border-left: 4px solid #888; font-style: norm
     padding-top: 120px;
 }
 
+.mega_bottom_pad {
+    padding-bottom: 120px;
+}
+
 .light_text {
     color: white;
 }
