@@ -5,15 +5,15 @@
             <div class="twelve columns alpha">
                 <p class="light_text">
                     <a href="/"><img class="logo_image" src="{{ static_url("img/logo.png") }}" alt="ArmaMG Logo"></a>
-                    The latest version (for Windows) is 0.2 (Preview)
+                    The latest version (for Windows) is 0.3
                     <br><span class="small"> * Requires .NET Framework 4+</span>
                 </p>
                 
             </div>
             <div class="four columns omega">
-                <a href="/serve/0.2" target="_blank" class="hero_button hero_button_blue">
+                <a href="/serve/0.3" target="_blank" class="hero_button hero_button_blue">
                     <img src="{{ static_url("img/iDownload.png") }}">
-                    Download v0.2
+                    Download v0.3
                 </a>
             </div>
         </div><!-- container -->
@@ -23,17 +23,24 @@
         <div class="eight columns alpha">
             <h3>Current Version</h3>
             <ul>
-                <li class="current-version"><a href="/serve/0.2" target="_blank">Version 0.2 - PREVIEW</a> (Released 28 March 2013, downloaded {{ d002 }} times)</li>
+                <li class="current-version"><a href="/serve/0.3" target="_blank">Version 0.3</a> (Released 18 May 2013, downloaded {{ d003 }} times)</li>
             </ul>
             <blockquote>
-                New units added and an objective defence mission generator
+                New generators, units and islands supported
             </blockquote>
             <ul>
                 <li>New Features:
                     <ul>
-                        <li>+ Defend the objective! Mission generator with waypoints and triggers</li>
-                        <li>+ Link to scripts at http://www.anvilproject.com/ and download to </li>
-                        <li>+ Export mission and script to folder when generated</li>
+                        <li>+ New "Capture" mission type generator</li>
+                        <li>+ New "Patrol" and "Air Patrol" mission type generators</li>
+                        <li>+ New units added, now ACE and RU, US and INS units supported</li>
+                        <li>+ Select generator type in UI</li>
+                        <li>+ Add map markers</li>
+                        <li>+ Optionally add waypoints for BLUFOR</li>
+                        <li>+ Support for Chernarus, Takistan and Lingor</li>
+                        <li>+ Text box to filter unit type in mission generator wizard</li>
+                        <li>+ Add "airfield" type spawn points for air patrol missions</li>
+                        <li>+ Units and Groups are all named in the mission SQM to make scripting easier</li>
                     </ul>
                 </li>
                 <li>Known Issues:
@@ -53,7 +60,7 @@
                 You can access the latest 'bleeding edge' version by compiling the C# source code from the "develop" branch at
                 <a href="https://github.com/will-hart/anvil/tree/develop">https://github.com/will-hart/anvil/tree/develop</a>.
             </blockquote>
-            <ul>
+            <!--<ul>
                 <li>New Features:
                     <ul>
                         <li>+ Allow user to choose mission type in mission wizard</li>
@@ -64,13 +71,34 @@
                         <li>+ Support ROE, Speeds and combat modes for waypoints</li>
                     </ul>
                 </li>
-            </ul>
+            </ul>-->
         </div>
         
         <hr>
         
         <div class="sixteen columns alpha omega">
             <h3>Previous Versions</h3>
+            
+            <ul>
+                <li><a href="/serve/0.2" target="_blank">Version 0.2 - PREVIEW</a> (Released 28 March 2013, downloaded {{ d002 }} times)</li>
+            </ul>
+            <blockquote>
+                New units added and an objective defence mission generator
+            </blockquote>
+            <ul>
+                <li>New Features:
+                    <ul>
+                        <li>+ Defend the objective! Mission generator with waypoints and triggers</li>
+                        <li>+ Link to scripts at http://www.anvilproject.com/ and download to </li>
+                        <li>+ Export mission and script to folder when generated</li>
+                    </ul>
+                </li>
+                <li>Known Issues:
+                    <ul>
+                        <li>! Can't select between "defend" and "random" mission generators (only defend available)</li>
+                    </ul>
+                </li>
+            </ul>
             <ul>
                 <li><a href="/serve/0.1" target="_blank">Version 0.1 - PREVIEW</a> (Released 17 March 2013, downloaded {{ d001 }} times)</li>
             </ul>

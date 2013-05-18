@@ -158,7 +158,8 @@ class DownloadHandler(BaseHandler):
     def get(self):
         d001 = self.db.get("SELECT downloads FROM files WHERE file_slug='0.1';")
         d002 = self.db.get("SELECT downloads FROM files WHERE file_slug='0.2';")
-        self.render("download.html", d001=d001.downloads, d002=d002.downloads)
+        d003 = self.db.get("SELECT downloads FROM files WHERE file_slug='0.3';")
+        self.render("download.html", d001=d001.downloads, d002=d002.downloads, d003=d003.downloads)
 
 
 class GalleryHandler(BaseHandler):
