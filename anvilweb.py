@@ -185,7 +185,7 @@ class FileServeHandler(BaseHandler):
         self.set_header("Content-Type", "application/x-zip-compressed")
         
         # get the download
-        with open('files/'+path,'rb') as f:
+        with open('/var/www/anvilproject.com/files/'+path,'rb') as f:
             self.write(f.read())
 
 
